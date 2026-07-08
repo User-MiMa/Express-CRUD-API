@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { pool } from "./config/db.js"
-import userRoutes from "./routes/userRoutes.js";
+import { router as userRoutes } from "./routes/userRoutes.js";
 import { errorHandling } from "./middleware/errorHandler.js";
 
 dotenv.config();
@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cors());
 
 //Routes
-app.get('/api',userRoutes);
+app.use('/api',userRoutes);
 
 //Error handling middleware
 app.use(errorHandling);
