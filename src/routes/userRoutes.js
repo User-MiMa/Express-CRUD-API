@@ -1,6 +1,6 @@
 import express from 'express';
 
-const router = express.Router();
+export const router = express.Router();
 
 router.get("/user",getAllUsers);
 router.post("/user",createUser);

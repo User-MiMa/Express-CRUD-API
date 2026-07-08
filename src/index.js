@@ -1,7 +1,9 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import {pool} from "./config/db.js"
+import { pool } from "./config/db.js"
+import userRoutes from "./routes/userRoutes.js";
+import { errorHandling } from "./middleware/errorHandler.js";
 
 dotenv.config();
 
@@ -13,8 +15,10 @@ app.use(express.json());
 app.use(cors());
 
 //Routes
+app.get('/api',userRoutes);
 
 //Error handling middleware
+app.use(errorHandling);
 
 //Test PG connection
 app.get("/", async function(req, res){
