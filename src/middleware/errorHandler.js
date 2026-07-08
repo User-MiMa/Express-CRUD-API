@@ -6,4 +6,4 @@ export const errorHandling = function (error, req, res, next) {
         error: error.message,
     });
 
-}
+};
