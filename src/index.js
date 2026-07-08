@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import { pool } from "./config/db.js"
 import { router as userRoutes } from "./routes/userRoutes.js";
 import { errorHandling } from "./middleware/errorHandler.js";
+import { createUserTable } from "./data/createUserTable.js";
 
 dotenv.config();
 
@@ -27,6 +28,9 @@ app.get("/", async function(req, res){
     res.send(`El nombre de la base de datos es: ${result.rows[0].current_database}`);
 
 });
+
+//Create table before starting server
+createUserTable();
 
 //Server listen
 
