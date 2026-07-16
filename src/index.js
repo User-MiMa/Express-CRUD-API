@@ -30,7 +30,7 @@ app.get("/", async function(req, res){
 });
 
 //Create table before starting server
-createUserTable();
+await createUserTable();
 
 //Server listen
 

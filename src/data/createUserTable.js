@@ -9,7 +9,7 @@ export const createUserTable = async function (){
     )`;
 
     try{
-        pool.query(queryCreateTable);
+        await pool.query(queryCreateTable);
         console.log('Table created successfully');
     }catch(error){
         console.log('Error creating user table', error);
