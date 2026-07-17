@@ -22,11 +22,13 @@ app.use('/api',userRoutes);
 app.use(errorHandling);
 
 //Test PG connection
-app.get("/", async function(req, res){
-
-    const result = await pool.query("SELECT current_database()");
-    res.send(`El nombre de la base de datos es: ${result.rows[0].current_database}`);
-
+app.get("/", async function(req, res, next){
+    try {
+        const result = await pool.query("SELECT current_database()");
+        res.send(`El nombre de la base de datos es: ${result.rows[0].current_database}`);
+    } catch(error) {
+        next(error);
+    }
 });
 
 //Create table before starting server
