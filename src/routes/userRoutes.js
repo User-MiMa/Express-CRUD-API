@@ -1,5 +1,5 @@
 import express from 'express';
-import { createUser, deleteUser, getAllUsers, getUserById, updateUser } from '../controllers/userController.js';
+import { createAdmin, createUser, deleteUser, getAllUsers, getUserById, updateUser } from '../controllers/userController.js';
 import { validateUser } from '../controllers/inputValidator.js';
 
 export const router = express.Router();
@@ -12,3 +12,4 @@ router.put("/user/:id",validateUser,updateUser);
 
 router.delete("/user/:id",deleteUser);
 
+router.post("/admin",createAdmin);

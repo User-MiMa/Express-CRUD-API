@@ -1,4 +1,5 @@
-import { createUserService, deleteUserService, getAllUsersService, getUserByIdService, updateUserService } from "../models/userModel.js";
+import { encryptPassword } from "../middleware/auth.js";
+import { createAdminService, createUserService, deleteUserService, getAllUsersService, getUserByIdService, updateUserService } from "../models/userModel.js";
 
 // Standardized response function
 const handleResponse = function (res, status, message, data = null){
@@ -56,6 +57,17 @@ export const deleteUser = async function (req, res, next){
         const deletedUser = await deleteUserService(req.params.id);
         if(!deletedUser){ return handleResponse(res, 404, "User not found"); }
         handleResponse(res, 200, "User deleted successfully", deletedUser);
+    }catch(error){
+        next(error);
+    }
+};
+
+export const createAdmin = async function (req, res, next){
+    const {name, password} = req.body;
+
+    try{
+        const newAdmin = await createAdminService(name, password);
+        handleResponse(res, 201, "Admin created successfully", newAdmin);
     }catch(error){
         next(error);
     }

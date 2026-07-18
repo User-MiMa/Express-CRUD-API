@@ -1,4 +1,6 @@
+import { hash } from "bcrypt";
 import { pool } from "../config/db.js";
+import {encryptPassword} from "../middleware/auth.js";
 
 export const getAllUsersService = async function(){
     const result = await pool.query('SELECT * FROM users');
@@ -22,5 +24,11 @@ export const updateUserService = async function(id, name, email){
 
 export const deleteUserService = async function(id){
     const result = await pool.query('DELETE FROM users WHERE id=$1 RETURNING *',[id]);
+    return result.rows[0];
+};
+
+export const createAdminService = async function (name, password){
+    const passwordHash = await encryptPassword(password);
+    const result = await pool.query('INSERT INTO admins (name, password) VALUES ($1, $2) RETURNING name', [name, passwordHash]);
     return result.rows[0];
 };

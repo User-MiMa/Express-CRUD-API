@@ -16,11 +16,12 @@ export const createUserTable = async function (){
                             ) AS v(name, email)
                             WHERE NOT EXISTS (SELECT 1 FROM users LIMIT 1)`;
 
-    const queryAllowedUsers = `CRETE TABLE IF NOT EXISTS admins (
+    const queryAllowedUsers = `CREATE TABLE IF NOT EXISTS admins (
                                 id SERIAL PRIMARY KEY,
-                                name VARCHAR(4) NOT NULL,
-                                password (255) NOT NULL),
-                                created_at TIMESTAMP DEFAULT NOW()`;
+                                name VARCHAR(4) NOT NUpero noLL,
+                                password VARCHAR(255) NOT NULL,
+                                created_at TIMESTAMP DEFAULT NOW()
+                                )`;
 
     try{
         await pool.query(queryCreateTable);
