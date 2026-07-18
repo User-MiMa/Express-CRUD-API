@@ -18,7 +18,7 @@ export const createUserTable = async function (){
 
     const queryAllowedUsers = `CREATE TABLE IF NOT EXISTS admins (
                                 id SERIAL PRIMARY KEY,
-                                name VARCHAR(4) NOT NUpero noLL,
+                                name VARCHAR(4) NOT NULL,
                                 password VARCHAR(255) NOT NULL,
                                 created_at TIMESTAMP DEFAULT NOW()
                                 )`;

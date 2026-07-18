@@ -1,5 +1,4 @@
-import { encryptPassword } from "../middleware/auth.js";
-import { createAdminService, createUserService, deleteUserService, getAllUsersService, getUserByIdService, updateUserService } from "../models/userModel.js";
+import { authenticateAdminService, createAdminService, createUserService, deleteUserService, getAllUsersService, getUserByIdService, updateUserService } from "../models/userModel.js";
 
 // Standardized response function
 const handleResponse = function (res, status, message, data = null){
@@ -68,6 +67,17 @@ export const createAdmin = async function (req, res, next){
     try{
         const newAdmin = await createAdminService(name, password);
         handleResponse(res, 201, "Admin created successfully", newAdmin);
+    }catch(error){
+        next(error);
+    }
+};
+
+export const loginAdmin = async function (req, res, next){
+    const {name, password} = req.body;
+    try{
+        const logedAdmin = await authenticateAdminService(name, password);
+        if(!logedAdmin){return handleResponse(res, 404, "Admin not found");}
+        handleResponse(res, 200, "Welcome!", logedAdmin);
     }catch(error){
         next(error);
     }
