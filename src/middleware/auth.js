@@ -10,3 +10,7 @@ export const comparePassword = async function (password, hash){
     const isCorrectPassword = await bcrypt.compare(password,hash);
     return isCorrectPassword;
 };
+
+export const generateToken = function(payload){
+    return jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: '1m'});
+};

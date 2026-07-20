@@ -1,3 +1,4 @@
+import { generateToken } from "../middleware/auth.js";
 import { authenticateAdminService, createAdminService, createUserService, deleteUserService, getAllUsersService, getUserByIdService, updateUserService } from "../models/userModel.js";
 
 // Standardized response function
@@ -77,7 +78,8 @@ export const loginAdmin = async function (req, res, next){
     try{
         const logedAdmin = await authenticateAdminService(name, password);
         if(!logedAdmin){return handleResponse(res, 404, "Admin not found");}
-        handleResponse(res, 200, "Welcome!", logedAdmin);
+        const token = generateToken({ name: logedAdmin });
+        handleResponse(res, 200, "Welcome! See your admin token below: ", {token});
     }catch(error){
         next(error);
     }
