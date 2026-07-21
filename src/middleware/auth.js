@@ -21,7 +21,7 @@ export const authenticateToken = function(req, res, next){
     const token = authHeader && authHeader.split(" ")[1];
 
     if(!token){
-        handleResponse(res, 401, "Access denied");
+        return handleResponse(res, 401, "Access denied");
     }
 
     try{
