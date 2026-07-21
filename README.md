@@ -220,10 +220,10 @@ DELETE /api/user/1                   → Deletes user with ID 1
 ### 🔌Probando la API / Testing the API
 
 **Español:**
-Para probar los endpoints, importa la colección `API-CRUD-CALLS` en Postman o cualquier herramienta que permita hacer llamadas HTTP e importar colecciones o crea tus propias llamadas. Puedes usar de referencia los ejemplos de la sección anterior.
+Para probar los endpoints, importa la colección `API-CRUD-CALLS` en Postman o cualquier herramienta que permita hacer llamadas HTTP e importar colecciones o crea tus propias llamadas. Puedes usar de referencia los ejemplos de la sección anterior, añadiendo el token obtenido para las rutas protegidas.
 
 **English:**
-To test the endpoints, import the `API-CRUD-CALLS` collection into Postman or any tool that allows making HTTP calls and importing collections or make your own. You can use the examples from the previous section as reference.
+To test the endpoints, import the `API-CRUD-CALLS` collection into Postman or any tool that allows making HTTP calls and importing collections or make your own. You can use the examples from the previous section as reference, adding the token for the protected endpoints.
 
 ---
 
