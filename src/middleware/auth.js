@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { handleResponse } from "../controllers/userController.js";
+import { handleResponse } from "../utils/response.js";
 
 export const encryptPassword = async function(password){
     const hash = await bcrypt.hash(password, 10);

@@ -1,14 +1,6 @@
 import { generateToken } from "../middleware/auth.js";
 import { authenticateAdminService, createAdminService, createUserService, deleteUserService, getAllUsersService, getUserByIdService, updateUserService } from "../models/userModel.js";
-
-// Standardized response function
-export const handleResponse = function (res, status, message, data = null){
-    res.status(status).json({
-        status,
-        message,
-        data,
-    });
-};
+import { handleResponse } from "../utils/response.js";
 
 export const createUser = async function (req, res, next){
     const { name, email } = req.body;
