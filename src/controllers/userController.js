@@ -2,7 +2,7 @@ import { generateToken } from "../middleware/auth.js";
 import { authenticateAdminService, createAdminService, createUserService, deleteUserService, getAllUsersService, getUserByIdService, updateUserService } from "../models/userModel.js";
 
 // Standardized response function
-const handleResponse = function (res, status, message, data = null){
+export const handleResponse = function (res, status, message, data = null){
     res.status(status).json({
         status,
         message,
