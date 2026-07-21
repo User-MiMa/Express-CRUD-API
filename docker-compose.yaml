@@ -1,0 +1,28 @@
+services:
+
+  postgres:
+    image: postgres:16-alpine
+    env_file: .env
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}  
+      POSTGRES_DB: ${DB_NAME}
+    ports: ["5432:5432"]
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+
+  backend:
+    build: .
+    ports:
+      - "5001:5001"
+    env_file: .env
+    environment:
+      - PORT=${PORT}
+      - DB_HOST=postgres     # nombre del servicio
+      - DB_PORT=5432            # puerto interno de PostgreSQL
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes: { pgdata: }
