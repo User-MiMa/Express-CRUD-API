@@ -2,6 +2,7 @@ import express from 'express';
 import { loginAdmin, createAdmin, createUser, deleteUser, getAllUsers, getUserById, updateUser } from '../controllers/userController.js';
 import { validateUser } from '../controllers/inputValidator.js';
 import { authenticateToken } from '../middleware/auth.js';
+import { admLimiter, authLimiter } from '../middleware/rateLimiter.js';
 
 export const router = express.Router();
 
@@ -13,6 +14,6 @@ router.put("/user/:id",validateUser,authenticateToken,updateUser);
 
 router.delete("/user/:id",authenticateToken,deleteUser);
 
-router.post("/admin",createAdmin);
+router.post("/admin",admLimiter,createAdmin);
 
-router.post("/admin/login",loginAdmin);
+router.post("/admin/login",authLimiter,loginAdmin);

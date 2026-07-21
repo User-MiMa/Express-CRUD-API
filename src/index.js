@@ -5,6 +5,7 @@ import { pool } from "./config/db.js"
 import { router as userRoutes } from "./routes/userRoutes.js";
 import { errorHandling } from "./middleware/errorHandler.js";
 import { createUserTable } from "./data/createUserTable.js";
+import { requestLimiter } from "./middleware/rateLimiter.js";
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ const port = process.env.PORT || 3001;
 //Middlewares
 app.use(express.json());
 app.use(cors());
+app.use(requestLimiter);
 
 //Routes
 app.use('/api',userRoutes);
