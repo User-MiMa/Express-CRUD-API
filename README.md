@@ -1,8 +1,8 @@
 # EXRESS-CRUD-API
 
-**Español:** Una API REST CRUD de usuarios con autenticación JWT, PostgreSQL, validación de inputs con Joi y rate limiting. Construida con Express.js 5, siguiendo una arquitectura en capas (routes → controllers → models). La base del CRUD fue desarrollada siguiendo [este video](https://www.youtube.com/watch?v=TYB-Lz8YGFk); la autenticación, el rate limiter y la contenedorización son implementaciones originales.
+**Español:** Una API REST CRUD de usuarios con autenticación JWT, PostgreSQL, validación de inputs con Joi y rate limiting. Construida con Express.js 5, siguiendo una arquitectura en capas (routes → controllers → models). La base del CRUD fue desarrollada siguiendo [este video](https://www.youtube.com/watch?v=TYB-Lz8YGFk); la autenticación/autorización, el rate limiter y la contenedorización son implementaciones originales.
 
-**English:** A CRUD REST API for users with JWT authentication, PostgreSQL, input validation with Joi and rate limiting. Built with Express.js 5, following a layered architecture (routes → controllers → models). The CRUD base was built following [this video](https://www.youtube.com/watch?v=TYB-Lz8YGFk); authentication, rate limiting, and containerization are original implementations.
+**English:** A CRUD REST API for users with JWT authentication, PostgreSQL, input validation with Joi and rate limiting. Built with Express.js 5, following a layered architecture (routes → controllers → models). The CRUD base was built following [this video](https://www.youtube.com/watch?v=TYB-Lz8YGFk); authentication/authorization, rate limiting, and containerization are original implementations.
 
 ---
 
